@@ -1,6 +1,8 @@
 import sys
 import math
 
+global centroid_A, centroid_B, centroid_C
+
 def printList(list):
   for p in list: print p
 
@@ -11,10 +13,10 @@ def readFile(filename):
 def distance(a, b):
   dimension = len(a)
   theSum = 0
-  for i in range (0, i):
+  for i in range (0, dimension):
     theSum += abs(a[i]**2 - b[i]**2)
 
-  return sqrt(theSum)
+  return math.sqrt(theSum)
 
 def findCentroids(data, dimension):
   theSum = []
@@ -33,10 +35,10 @@ def findCentroids(data, dimension):
 
   return centroid
 
-def predict(point, centroid_A, centroid_B, centroid_C):
+def predict(point):
   distance_A = distance(centroid_A, point)
   distance_B = distance(centroid_B, point)
-  distance_A = distance(centroid_C, point)
+  distance_C = distance(centroid_C, point)
 
   if (distance_A < distance_B and distance_A < distance_C):
     return 'A'
@@ -77,7 +79,19 @@ count_A_test = int(info_test[1])
 count_B_test = int(info_test[2])
 count_C_test = int(info_test[3])
 
+data_A_test = testingData[0 : count_A_test]
+data_B_test = testingData[count_A_test : count_A_test + count_B_test]
+data_C_test = testingData[count_A_test + count_B_test : count_A_test + count_B_test + count_C_test]
 
+TP_A = 0
+FP_A = 0
+FN_A = 0
+TN_A = 0
+for n in range(0, len(data_A_test)):
+  point = list(map(lambda x: float(x), data_A_test[n].split(' ')))
+  prediction = predict(point)
+  print prediction
+  # if (prediction == 'A') {}
 
 # print centroid_A, centroid_B, centroid_C
 

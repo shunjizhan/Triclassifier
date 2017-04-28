@@ -7,18 +7,26 @@ def readFile(filename):
 def findCentroids(data):
   return
 
+def printList(list):
+  for p in list: print p
 
+#~~~~~~~~~~ Main ~~~~~~~~~~#
 trainingData = readFile(sys.argv[1]);
 
 info = trainingData[0].split(' ')
 trainingData = trainingData[1 :]
-for p in trainingData: print p
 
 dimension = int(info[0])
 count_A = int(info[1])
 count_B = int(info[2])
 count_C = int(info[3])
 
-data_A = trainingData[1 : count_A]
-data_B = trainingData[count_A + 1 : count_B]
-data_C = trainingData[count_C + 1 : count_C]
+print count_A, count_B,count_C
+
+data_A = trainingData[0 : count_A]
+data_B = trainingData[count_A : count_A + count_B]
+data_C = trainingData[count_A + count_B : count_A + count_B + count_C]
+
+# printList(data_A)
+# printList(data_B)
+# printList(data_C)

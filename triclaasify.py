@@ -173,6 +173,10 @@ ERR = (ERR_A + ERR_B + ERR_C) / 3
 ACC = (ACC_A + ACC_B + ACC_C) / 3
 PRE = (PRE_A + PRE_B + PRE_C) / 3
 
+orig_stdout = sys.stdout
+f = open('output.txt', 'w')
+sys.stdout = f
+
 print 'True positive rate = {}'.format(TPR)
 print 'False positive rate = {}'.format(FPR)
 print 'Error rate = {}'.format(ERR)
